@@ -17,5 +17,5 @@
 - ссылки на них должны быть добавлены в файл readme.md (в нужную секцию в зависимости от обязательности добавленных документов). Формат: `[a relative link](other_file.md)`
 
 
-## Feeback
+## Feedback
 [@piechart](https://mssg.me/piechart), [@lishanda](https://mssg.me/lishanda)
