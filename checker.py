@@ -1,5 +1,6 @@
 import os
 import sys
+import re
 
 README_FILENAME = 'readme.md'
 FILES_DIR = 'files'
@@ -40,6 +41,11 @@ def check_all_files_mentioned_in_readme():
     else:
         print('No files to check')
 
+    readme_files = re.findall('\(files/(.*?)\)', readme_content)
+    for readme_file in readme_files:
+        if not readme_file in content_files:
+            fail('File {0} mentioned in readme.md but not found in `{1}` directory. Please upload it'.format(readme_file, FILES_DIR))
+
 def check_correct_files_location():
     log_important('Checking correct_files_location')
     root_content = os.listdir()
@@ -52,7 +58,7 @@ def check_correct_files_location():
         invalid_objects = list(root_content_as_set - valid_set) if len(root_content_as_set) > len(valid_set) else list(valid_set - root_content_as_set)
         for invalid_object in invalid_objects:
             print('Found invalid file location: {0}'.format(invalid_object))
-            print('All files must be placed in `files` directory')
+            print('All files must be placed in `{0}` directory'.format(FILES_DIR))
         fail('Found files with invalid locations')
 
 def check_correct_filenames():
