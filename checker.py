@@ -4,6 +4,7 @@ import sys
 README_FILENAME = 'readme.md'
 FILES_DIR = 'files'
 VALID_ROOT_CONTENT = (README_FILENAME, '.github', FILES_DIR, '.git', 'checker.py', 'contribute.md')
+SPACE_CHAR = ' '
 
 def fail(message):
     sys.exit('(!!) {0}'.format(message))
@@ -13,7 +14,6 @@ def log_important(message):
 
 def filter_files(filenames):
     visible_files = filter(lambda item: not item.startswith('.'), filenames)
-    # filenames = map(lambda item: item.split('.')[0], visible_files)
     return list(visible_files)
 
 def check_readme_exists():
@@ -37,9 +37,6 @@ def check_all_files_mentioned_in_readme():
 
             if not content_file in readme_content:
                 fail('File {0} not found in readme.md'.format(content_file))
-
-            # if not content_file.endswith('pdf'):
-            #     fail('File {0} has incorrect format. PDF is expected'.format(content_file))
     else:
         print('No files to check')
 
@@ -58,7 +55,19 @@ def check_correct_files_location():
             print('All files must be placed in `files` directory')
         fail('Found files with invalid locations')
 
+def check_correct_filenames():
+    log_important('Checking correct_filenames')
+    content_files = filter_files(os.listdir(FILES_DIR))
+
+    if content_files:
+        for file_name in content_files:
+            if SPACE_CHAR in file_name:
+                fail('Files must not have spaces in their names. Found space in {0}'.format(file_name))
+    else:
+        print('No files to check')
+
 check_readme_exists()
 check_files_dir_exists()
 check_all_files_mentioned_in_readme()
 check_correct_files_location()
+check_correct_filenames()
