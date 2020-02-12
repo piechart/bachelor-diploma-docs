@@ -8,7 +8,7 @@
 1. Зайти в папку [files](https://github.com/piechart/bachelor-diploma-docs/tree/master/files)
 2. Нажать Upload files
 ![](http://ipic.su/img/img7/fs/Snimokekrana2020-02-06v15.1580993161.png)
-3. Выбрать нужные файлы
+3. Выбрать нужные файлы. **Убедиться, что в названиях загружаемых файлов отсутствуют пробелы**
 4. Над кнопкой Commit changes переключить селектор на Create new branch, название создаваемой ветки значения не имеет
 5. Нажать Propose changes
 ![](http://ipic.su/img/img7/fs/Snimokekrana2020-02-06v15.1580993392.png)
