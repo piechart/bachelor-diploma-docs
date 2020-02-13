@@ -8,10 +8,12 @@ VALID_ROOT_CONTENT = (README_FILENAME, '.github', FILES_DIR, '.git', 'checker.py
 SPACE_CHAR = ' '
 
 def fail(message):
-    sys.exit('(!!) {0}'.format(message))
+    text = '(!!) **{0}**'.format(message)
+    print(text)
+    sys.exit(1)
 
 def log_important(message):
-    print('>>> {0}'.format(message))
+    print('> {0}'.format(message))
 
 def filter_files(filenames):
     visible_files = filter(lambda item: not item.startswith('.'), filenames)
@@ -20,12 +22,12 @@ def filter_files(filenames):
 def check_readme_exists():
     log_important('Checking readme exists')
     if not os.path.isfile(README_FILENAME):
-        fail('readme.md not found')
+        fail('{0} not found'.format(README_FILENAME))
 
 def check_files_dir_exists():
     log_important('Checking files dir exists')
     if not os.path.isdir(FILES_DIR):
-        fail('files directory not found')
+        fail('`{0}` directory not found'.format(FILES_DIR))
 
 def check_all_files_mentioned_in_readme():
     log_important('Checking all_files_mentioned_in_readme')
@@ -34,23 +36,24 @@ def check_all_files_mentioned_in_readme():
 
     if content_files:
         for content_file in content_files:
-            print('Checking file {0}'.format(content_file))
-
             if not content_file in readme_content:
-                fail('File {0} not found in readme.md'.format(content_file))
+                fail('File {0} not found in {1}'.format(content_file, README_FILENAME))
     else:
         print('No files to check')
 
     readme_files = re.findall('\(files/(.*?)\)', readme_content)
     for readme_file in readme_files:
         if not readme_file in content_files:
-            fail('File {0} mentioned in readme.md but not found in `{1}` directory. Please upload it'.format(readme_file, FILES_DIR))
+            fail('File {0} mentioned in {1} but not found in `{2}` directory. Please upload it'.format(
+                readme_file,
+                README_FILENAME,
+                FILES_DIR,
+            ))
 
 def check_correct_files_location():
     log_important('Checking correct_files_location')
     root_content = os.listdir()
-    print('Root content:\n{0}'.format(root_content))
-
+    
     root_content_as_set = set(root_content)
     valid_set = set(VALID_ROOT_CONTENT)
 
