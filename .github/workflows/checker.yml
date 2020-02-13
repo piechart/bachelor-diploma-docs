@@ -1,6 +1,6 @@
 name: CI
 
-on: [push]
+on: [pull_request]
 
 jobs:
   build:
@@ -13,5 +13,21 @@ jobs:
       with:
         python-version: '3.x'
         architecture: 'x64'
+
     - name: Main Checker
-      run: python checker.py
+      id: mainchecker
+      run: |
+        checkerlog=$(python checker.py || true)
+        checkerlog="${checkerlog//'%'/'%25'}"
+        checkerlog="${checkerlog//$'\n'/'%0A'}"
+        checkerlog="${checkerlog//$'\r'/'%0D'}"
+        echo "::set-output name=checkerlog::$checkerlog"
+        
+        python checker.py
+
+    - name: Comment PR with checker log
+      if: failure()
+      uses: thollander/actions-comment-pull-request@master
+      with:
+        message: ${{ steps.mainchecker.outputs.checkerlog }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
