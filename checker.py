@@ -15,7 +15,7 @@ VALID_ROOT_CONTENT = (
     'contribute.md'
 )
 SPACE_CHAR = ' '
-SPACE_FAIL_STR = 'Files must not have spaces in their names. Found space in {0}'
+SPACE_FAIL_STR = 'Files must not have spaces in their names. Found space in `{0}`'
 
 
 def fail(message):
@@ -74,14 +74,14 @@ def check_all_files_mentioned_in_readme():
     if content_files:
         for content_file in content_files:
             if not content_file in readme_content:
-                fail('File {0} not found in {1}'.format(content_file, README_FILENAME))
+                fail('File `{0}` not found in `{1}`'.format(content_file, README_FILENAME))
     else:
         print('No files to check')
 
     readme_files = re.findall('\(files/(.*?)\)', readme_content)
     for readme_file in readme_files:
         if not readme_file in content_files:
-            fail('File {0} mentioned in {1} but not found in `{2}` directory. Please upload it'.format(
+            fail('File `{0}` mentioned in `{1}` but not found in `{2}` directory. Please upload it'.format(
                 readme_file,
                 README_FILENAME,
                 FILES_DIR,
@@ -100,7 +100,7 @@ def check_correct_files_location():
             if len(root_content_as_set) > len(valid_set) \
             else list(valid_set - root_content_as_set)
         for invalid_object in invalid_objects:
-            print('Found invalid file location: {0}'.format(invalid_object))
+            print('Found invalid file location: `{0}`'.format(invalid_object))
             print('All files must be placed in `{0}` directory'.format(FILES_DIR))
         fail('Found files with invalid locations')
 
