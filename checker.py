@@ -78,7 +78,7 @@ def check_all_files_mentioned_in_readme():
     else:
         print('No files to check')
 
-    readme_files = re.findall('\(files/(.*?)\)', readme_content)
+    readme_files = re.findall('\(files/(.*?)\)\n', readme_content)
     for readme_file in readme_files:
         if not readme_file in content_files:
             fail('File `{0}` mentioned in `{1}` but not found in `{2}` directory. Please upload it'.format(
