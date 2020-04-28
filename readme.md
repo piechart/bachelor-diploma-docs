@@ -30,7 +30,9 @@
 
 ## CRISP-DM
 - [Руководство по CRISP-DM](files/ModelerCRISPDM.pdf)
+- [(шаблон) 4 этап. Моделирование](files/CRISP-DM_4_Моделирование.docx)
 - [(шаблон) 5 этап. Оценка модели](files/CRISP-DM_5_Оценка_модели.docx)
+
 
 
 
