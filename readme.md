@@ -31,6 +31,11 @@
 - [Руководство по CRISP-DM](files/ModelerCRISPDM.pdf)
 ---
 
+
+## Шаблоны CRISP-DM
+[5 этап. Оценка модели](files/CRISP-DM_5_Оценка_модели.docx)
+
+
 ## Добавление файлов
 Инструкции в [contribute.md](contribute.md)
 
