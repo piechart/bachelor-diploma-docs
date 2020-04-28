@@ -17,6 +17,7 @@ VALID_ROOT_CONTENT = (
 SPACE_CHAR = ' '
 SPACE_FAIL_STR = 'Files must not have spaces in their names. Found space in `{0}`'
 LIST_ITEM_PREFIX = '- '
+README_FILENAME_EXAMPLE = 'filename.pdf'
 
 
 def fail(message):
@@ -74,6 +75,8 @@ def check_all_files_mentioned_in_readme():
 
     if content_files:
         for content_file in content_files:
+            if README_FILENAME_EXAMPLE in content_file:
+                continue
             if not content_file in readme_content:
                 fail('File `{0}` not found in `{1}`'.format(content_file, README_FILENAME))
     else:
@@ -81,6 +84,8 @@ def check_all_files_mentioned_in_readme():
 
     readme_files = re.findall('\(files/(.*?)\)\n', readme_content)
     for readme_file in readme_files:
+        if README_FILENAME_EXAMPLE in readme_file:
+            continue
         if not readme_file in content_files:
             fail('File `{0}` mentioned in `{1}` but not found in `{2}` directory. Please upload it'.format(
                 readme_file,
