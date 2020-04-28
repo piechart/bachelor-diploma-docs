@@ -16,6 +16,7 @@ VALID_ROOT_CONTENT = (
 )
 SPACE_CHAR = ' '
 SPACE_FAIL_STR = 'Files must not have spaces in their names. Found space in `{0}`'
+LIST_ITEM_PREFIX = '- '
 
 
 def fail(message):
@@ -129,9 +130,21 @@ def check_duplicate_files():
         fail('Found duplicates:\n> ' + '\n> '.join(duplicates))
 
 
+def check_references_dont_have_newlines_and_have_list_marker():
+    log_important('Checking references_dont_have_newlines_and_have_list_marker')
+    readme_content = open(README_FILENAME).read()
+    lines = readme_content.split('\n')
+    file_marker = '{0}/'.format(FILES_DIR)
+    file_refs = list(filter(lambda item: file_marker in item, lines))
+    invalid_refs = list(filter(lambda item: not item.startswith(LIST_ITEM_PREFIX), file_refs))
+    if invalid_refs:
+        fail('Invalid markdown references found. File reference name must have one line and must have list marker ("- ") at its beginning. Invalid refs:\n> ' + '\n> '.join(invalid_refs))
+
+
 check_readme_exists()
 check_files_dir_exists()
 check_all_files_mentioned_in_readme()
 check_correct_files_location()
 check_correct_filenames()
 check_duplicate_files()
+check_references_dont_have_newlines_and_have_list_marker()
