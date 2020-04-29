@@ -34,6 +34,7 @@
 - [(шаблон) 1 этап. Понимание бизнеса](files/business_understanding.docx)
 - [(шаблон) 4 этап. Моделирование](files/CRISP-DM_4_Моделирование.docx)
 - [(шаблон) 5 этап. Оценка модели](files/CRISP-DM_5_Оценка_модели.docx)
+- [(шаблон) 2-3-4 этапы. Внутри 6 отчётов](files/Dmitrieva_K3443_shablony.docx)
 
 
 
