@@ -17,6 +17,7 @@ if (danger.github.pr.title.match(/patch.\d+/)) {
 const importantFiles = [
   '.github/workflows/checker.yml',
   '.github/workflows/danger.yml',
+  '.github/workflows/rebase.yml',
   '.github/CODEOWNERS',
   '.github/pull_request_template',
 
