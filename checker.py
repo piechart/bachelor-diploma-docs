@@ -12,7 +12,8 @@ VALID_ROOT_CONTENT = (
     '.github',
     '.git',
     'checker.py',
-    'contribute.md'
+    'contribute.md',
+    'dangerfile.ts',
 )
 SPACE_CHAR = ' '
 SPACE_FAIL_STR = 'Files must not have spaces in their names. Found space in `{0}`'

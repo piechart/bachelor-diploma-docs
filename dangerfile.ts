@@ -1,0 +1,38 @@
+import { danger, fail, warn } from 'danger'
+
+// Critical
+// ========
+
+if (danger.github.pr.base.ref !== 'master') {
+  fail('We only accept PRs to `master` branch.')
+}
+
+if (danger.github.pr.title.match(/patch.\d+/)) {
+  fail('Please list added files names in PR title.')
+}
+
+// Warnings
+// ========
+
+const importantFiles = [
+  '.github/workflows/checker.yml',
+  '.github/workflows/danger.yml',
+  '.github/CODEOWNERS',
+  '.github/pull_request_template',
+
+  'dangerfile.ts',
+  'checker.py',
+  'contribute.md'
+]
+
+const changedFiles = [
+  ...danger.git.modified_files,
+  ...danger.git.created_files,
+  ...danger.git.deleted_files,
+]
+
+for (const changedFile of changedFiles) {
+  if (importantFiles.includes(changedFile)) {
+    fail(`Changed an important file: ${changedFile}`)
+  }
+}
