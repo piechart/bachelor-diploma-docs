@@ -7,7 +7,8 @@ if (danger.github.pr.base.ref !== 'master') {
   fail('We only accept PRs to `master` branch.')
 }
 
-if (danger.github.pr.title.match(/patch.\d+/)) {
+const prTitle = danger.github.pr.title
+if (prTitle.match(/patch.\d+/)) || ((prTitle.includes('Add file')) && (prTitle.includes('via upload'))) {
   fail('Please list added files names in PR title.')
 }
 
