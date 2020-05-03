@@ -8,12 +8,12 @@ if (danger.github.pr.base.ref !== 'master') {
 }
 
 const prTitle = danger.github.pr.title
-if (prTitle.match(/patch.\d+/)) || ((prTitle.includes('Add file')) && (prTitle.includes('via upload'))) {
+const patchMatch = prTitle.match(/patch.\d+/)
+const addFileViaUpload = prTitle.includes('Add file') && prTitle.includes('via upload')
+
+if patchMatch || addFileViaUpload {
   fail('Please list added files names in PR title.')
 }
-
-// Warnings
-// ========
 
 const importantFiles = [
   '.github/workflows/checker.yml',
