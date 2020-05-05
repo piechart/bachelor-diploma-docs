@@ -38,6 +38,7 @@
 - [(шаблон) 5 этап. Оценка модели](files/CRISP-DM_5_Оценка_модели.docx)
 - [(шаблон) 2-3-4 этапы. Внутри 6 отчётов](files/Dmitrieva_K3443_shablony.docx)
 - [(шаблон) 1-2-3 этапы. отчеты](files/Pavlenko_CRISP-DM.docx)
+- [(шаблон) 6 этап. отчет](files/CRISPDM_FinalReport.docx)
 
 
 
