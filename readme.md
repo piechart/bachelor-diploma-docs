@@ -43,8 +43,10 @@
 - [(шаблон) 6 этап. отчет](files/CRISPDM_FinalReport.docx)
 - [(шаблон) 6 этап. Внедрение](files/crispdm_deployment_ulizko_k3442.docx)
 
-
-
+## RUP standards
+- [Software Architecture Document](files/Software_Architecture_Document.docx)
+- [Software Requirements Specification](files/Software_Requirements_Specification.docx)
+- [Test Plan](files/Test_Plan.docx)
 
 
 
