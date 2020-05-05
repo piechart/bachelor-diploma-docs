@@ -41,6 +41,9 @@
 - [(шаблон) 2-3-4 этапы. Внутри 6 отчётов](files/Dmitrieva_K3443_shablony.docx)
 - [(шаблон) 1-2-3 этапы. отчеты](files/Pavlenko_CRISP-DM.docx)
 - [(шаблон) 6 этап. отчет](files/CRISPDM_FinalReport.docx)
+- [(шаблон) 6 этап. Внедрение](files/crispdm_deployment_ulizko_k3442.docx)
+
+
 
 
 
