@@ -29,6 +29,7 @@
 - [Методология функционального моделирования](files/idef.pdf)
 - [BPMN Нотация моделирования бизнес-процессов](files/BPMN_specification.pdf)
 - [Графические элементы нотации BPMN](files/BPMN_poster.pdf)
+- [Моделирование на UML](files/uml.pdf)
 
 
 ## CRISP-DM
