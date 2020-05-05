@@ -10,8 +10,9 @@ if (danger.github.pr.base.ref !== 'master') {
 const prTitle = danger.github.pr.title
 const patchMatch = prTitle.match(/patch.\d+/)
 const addFileViaUpload = prTitle.includes('Add file') && prTitle.includes('via upload')
+const readme = prTitle.includes('readme.md')
 
-if (patchMatch || addFileViaUpload) {
+if (patchMatch || addFileViaUpload || readme) {
   fail('Please list added files names in PR title.')
 }
 
